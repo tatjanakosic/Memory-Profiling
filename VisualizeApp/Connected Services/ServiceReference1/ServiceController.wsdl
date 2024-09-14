@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ServiceController" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="NetTcpBinding_IServiceController_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:8081/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:8081/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Common.Exceptions" />
+      <xsd:import schemaLocation="http://localhost:8081/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8081/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Common" />
+      <xsd:import schemaLocation="http://localhost:8081/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Common.MethodProfiler" />
+      <xsd:import schemaLocation="http://localhost:8081/?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IServiceController_PostRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:PostRequest" />
+  </wsdl:message>
+  <wsdl:message name="IServiceController_PostRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PostRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceController_PostRequest_InternalCommunicationExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/Common.Exceptions" name="detail" element="q1:InternalCommunicationException" />
+  </wsdl:message>
+  <wsdl:message name="IServiceController_PrintLoad_InputMessage">
+    <wsdl:part name="parameters" element="tns:PrintLoad" />
+  </wsdl:message>
+  <wsdl:message name="IServiceController_PrintLoad_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PrintLoadResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceController_PrintAudit_InputMessage">
+    <wsdl:part name="parameters" element="tns:PrintAudit" />
+  </wsdl:message>
+  <wsdl:message name="IServiceController_PrintAudit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PrintAuditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceController_AddLoad_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddLoad" />
+  </wsdl:message>
+  <wsdl:message name="IServiceController_AddLoad_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddLoadResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceController_RemoveAudit_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveAudit" />
+  </wsdl:message>
+  <wsdl:message name="IServiceController_RemoveAudit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveAuditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceController_RemoveAllDataFromInMemory_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveAllDataFromInMemory" />
+  </wsdl:message>
+  <wsdl:message name="IServiceController_RemoveAllDataFromInMemory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveAllDataFromInMemoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceController_AddLoadMany_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddLoadMany" />
+  </wsdl:message>
+  <wsdl:message name="IServiceController_AddLoadMany_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddLoadManyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceController_TrackObject_InputMessage">
+    <wsdl:part name="parameters" element="tns:TrackObject" />
+  </wsdl:message>
+  <wsdl:message name="IServiceController_TrackObject_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TrackObjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceController_GetLoadObjectCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLoadObjectCount" />
+  </wsdl:message>
+  <wsdl:message name="IServiceController_GetLoadObjectCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLoadObjectCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceController_GetLoadObjectGenerations_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLoadObjectGenerations" />
+  </wsdl:message>
+  <wsdl:message name="IServiceController_GetLoadObjectGenerations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLoadObjectGenerationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceController_GetMemoryUsage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMemoryUsage" />
+  </wsdl:message>
+  <wsdl:message name="IServiceController_GetMemoryUsage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMemoryUsageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceController_ExportDataToCsv_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExportDataToCsv" />
+  </wsdl:message>
+  <wsdl:message name="IServiceController_ExportDataToCsv_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExportDataToCsvResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IServiceController">
+    <wsdl:operation name="PostRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceController/PostRequest" message="tns:IServiceController_PostRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceController/PostRequestResponse" message="tns:IServiceController_PostRequest_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IServiceController/PostRequestInternalCommunicationExceptionFault" name="InternalCommunicationExceptionFault" message="tns:IServiceController_PostRequest_InternalCommunicationExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PrintLoad">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceController/PrintLoad" message="tns:IServiceController_PrintLoad_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceController/PrintLoadResponse" message="tns:IServiceController_PrintLoad_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PrintAudit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceController/PrintAudit" message="tns:IServiceController_PrintAudit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceController/PrintAuditResponse" message="tns:IServiceController_PrintAudit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddLoad">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceController/AddLoad" message="tns:IServiceController_AddLoad_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceController/AddLoadResponse" message="tns:IServiceController_AddLoad_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveAudit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceController/RemoveAudit" message="tns:IServiceController_RemoveAudit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceController/RemoveAuditResponse" message="tns:IServiceController_RemoveAudit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveAllDataFromInMemory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceController/RemoveAllDataFromInMemory" message="tns:IServiceController_RemoveAllDataFromInMemory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceController/RemoveAllDataFromInMemoryResponse" message="tns:IServiceController_RemoveAllDataFromInMemory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddLoadMany">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceController/AddLoadMany" message="tns:IServiceController_AddLoadMany_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceController/AddLoadManyResponse" message="tns:IServiceController_AddLoadMany_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TrackObject">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceController/TrackObject" message="tns:IServiceController_TrackObject_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceController/TrackObjectResponse" message="tns:IServiceController_TrackObject_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLoadObjectCount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceController/GetLoadObjectCount" message="tns:IServiceController_GetLoadObjectCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceController/GetLoadObjectCountResponse" message="tns:IServiceController_GetLoadObjectCount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLoadObjectGenerations">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceController/GetLoadObjectGenerations" message="tns:IServiceController_GetLoadObjectGenerations_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceController/GetLoadObjectGenerationsResponse" message="tns:IServiceController_GetLoadObjectGenerations_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMemoryUsage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceController/GetMemoryUsage" message="tns:IServiceController_GetMemoryUsage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceController/GetMemoryUsageResponse" message="tns:IServiceController_GetMemoryUsage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExportDataToCsv">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceController/ExportDataToCsv" message="tns:IServiceController_ExportDataToCsv_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceController/ExportDataToCsvResponse" message="tns:IServiceController_ExportDataToCsv_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NetTcpBinding_IServiceController" type="tns:IServiceController">
+    <wsp:PolicyReference URI="#NetTcpBinding_IServiceController_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="PostRequest">
+      <soap12:operation soapAction="http://tempuri.org/IServiceController/PostRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="InternalCommunicationExceptionFault">
+        <soap12:fault use="literal" name="InternalCommunicationExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="PrintLoad">
+      <soap12:operation soapAction="http://tempuri.org/IServiceController/PrintLoad" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PrintAudit">
+      <soap12:operation soapAction="http://tempuri.org/IServiceController/PrintAudit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddLoad">
+      <soap12:operation soapAction="http://tempuri.org/IServiceController/AddLoad" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveAudit">
+      <soap12:operation soapAction="http://tempuri.org/IServiceController/RemoveAudit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveAllDataFromInMemory">
+      <soap12:operation soapAction="http://tempuri.org/IServiceController/RemoveAllDataFromInMemory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddLoadMany">
+      <soap12:operation soapAction="http://tempuri.org/IServiceController/AddLoadMany" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TrackObject">
+      <soap12:operation soapAction="http://tempuri.org/IServiceController/TrackObject" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLoadObjectCount">
+      <soap12:operation soapAction="http://tempuri.org/IServiceController/GetLoadObjectCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLoadObjectGenerations">
+      <soap12:operation soapAction="http://tempuri.org/IServiceController/GetLoadObjectGenerations" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMemoryUsage">
+      <soap12:operation soapAction="http://tempuri.org/IServiceController/GetMemoryUsage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExportDataToCsv">
+      <soap12:operation soapAction="http://tempuri.org/IServiceController/ExportDataToCsv" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServiceController">
+    <wsdl:port name="NetTcpBinding_IServiceController" binding="tns:NetTcpBinding_IServiceController">
+      <soap12:address location="net.tcp://localhost:4000/IServiceController" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:4000/IServiceController</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>TATJANAKOSI5213\tatjanakosic</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
